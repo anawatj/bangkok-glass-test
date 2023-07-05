@@ -43,7 +43,27 @@ namespace API.Controllers
             }catch(Exception ex)
             {
                 var result = new JsonResult(ex.Message);
+                result.StatusCode = 500;
                 return result;
+            }
+        }
+
+        [Route("{id}")]
+        [HttpPut]
+        public ActionResult UpdateOrder(string id,OrderDto input)
+        {
+            try
+            {
+                var result = orderService.UpdateOrder(id, input);
+                var data = new JsonResult(result);
+                data.StatusCode = 200;
+                return data;
+            }
+            catch (Exception ex)
+            {
+                var data = new JsonResult(ex.Message);
+                data.StatusCode = 400;
+                return data;
             }
         }
     }

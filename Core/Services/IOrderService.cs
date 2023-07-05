@@ -11,5 +11,7 @@ namespace Core.Services
     {
         OrderDto CreateOrder(OrderDto input);
         OrderDto GetOrderById(string id);
+
+        OrderDto UpdateOrder(string id, OrderDto input);
     }
 }

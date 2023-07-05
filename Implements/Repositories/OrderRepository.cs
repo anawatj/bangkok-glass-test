@@ -44,7 +44,9 @@ namespace Implements.Repositories
 
         public Order Update(Order entity, string id)
         {
-            throw new NotImplementedException();
+            this.db.Orders.Update(entity);
+            this.db.SaveChanges();
+            return entity;
         }
     }
 }
