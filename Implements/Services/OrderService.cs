@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Domains;
 using Core.Dtos;
 using Core.Repositories;
 using Core.Services;
@@ -26,7 +27,54 @@ namespace Implements.Services
         }
         public OrderDto CreateOrder(OrderDto input)
         {
-            throw new NotImplementedException();
+            
+            try
+            {
+                List<string> errors = new List<string>();
+                if (string.IsNullOrEmpty(input.RegionId))
+                {
+                    errors.Add("Region is required");
+                }
+                if (string.IsNullOrEmpty(input.CityId))
+                {
+                    errors.Add("City is required");
+                }
+
+                if (string.IsNullOrEmpty(input.CategoryId))
+                {
+                    errors.Add("Category is required");
+                }
+                if (string.IsNullOrEmpty(input.ProductId))
+                {
+                    errors.Add("Product is required");
+                }
+                if (input.Quantity<=0)
+                {
+                    errors.Add("quantity is required");
+                }
+                if (input.UnitPrice <= 0)
+                {
+                    errors.Add("unit price is required");
+                }
+
+                if (input.TotalPrice <= 0)
+                {
+                    errors.Add(" total unit price is required");
+                }
+                if (errors.Count > 0)
+                {
+                    throw new Exception(String.Join(",", errors));
+                }
+
+                Order entity = mapper.Map<OrderDto, Order>(input);
+                var result = orderRepository.Add(entity);
+                return mapper.Map<Order,OrderDto>(result);
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

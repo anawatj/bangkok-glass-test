@@ -9,6 +9,7 @@ namespace Core.Dtos
     public class OrderDto
     {
         public string Id { get; set; }
+        public DateTime OrderDate { get; set; }
 
         public string RegionId { get; set; }
 
