@@ -13,5 +13,6 @@ namespace Core.Services
         OrderDto GetOrderById(string id);
 
         OrderDto UpdateOrder(string id, OrderDto input);
+        void DeleteOrder(string id);
     }
 }

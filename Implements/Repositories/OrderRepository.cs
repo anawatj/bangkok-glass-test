@@ -24,7 +24,9 @@ namespace Implements.Repositories
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            var order = this.db.Orders.Where(t => t.Id == id).First() ;
+            this.db.Orders.Remove(order);
+            this.db.SaveChanges();
         }
 
         public List<Order> FindAll()

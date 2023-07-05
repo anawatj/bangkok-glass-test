@@ -66,5 +66,23 @@ namespace API.Controllers
                 return data;
             }
         }
+        [Route("{id}")]
+        [HttpDelete]
+        public ActionResult DeleteOrder(string id)
+        {
+            try
+            {
+                orderService.DeleteOrder(id);
+                var data = new JsonResult("Success");
+                data.StatusCode = 200;
+                return data;
+            }
+            catch (Exception ex)
+            {
+                var data = new JsonResult(ex.Message);
+                data.StatusCode = 400;
+                return data;
+            }
+        }
     }
 }

@@ -78,6 +78,23 @@ namespace Implements.Services
             }
         }
 
+        public void DeleteOrder(string id)
+        {
+            try
+            {
+                var order = orderRepository.FindById(id);
+                if(order == null)
+                {
+                    throw new Exception("this order not found");
+                }
+                orderRepository.Delete(id);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public OrderDto GetOrderById(string id)
         {
             try
