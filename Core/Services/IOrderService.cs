@@ -10,5 +10,6 @@ namespace Core.Services
     public interface IOrderService
     {
         OrderDto CreateOrder(OrderDto input);
+        OrderDto GetOrderById(string id);
     }
 }

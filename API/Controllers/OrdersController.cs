@@ -30,5 +30,21 @@ namespace API.Controllers
                 return data;
             }
         }
+        [Route("{id}")]
+        [HttpGet]
+        public ActionResult GetOrderById(string id)
+        {
+            try
+            {
+                var order = orderService.GetOrderById(id);
+                var result = new JsonResult(order);
+                result.StatusCode = 200;
+                return result;
+            }catch(Exception ex)
+            {
+                var result = new JsonResult(ex.Message);
+                return result;
+            }
+        }
     }
 }

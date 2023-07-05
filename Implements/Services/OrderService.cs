@@ -67,11 +67,24 @@ namespace Implements.Services
                 }
 
                 Order entity = mapper.Map<OrderDto, Order>(input);
+                entity.Id = Guid.NewGuid().ToString();
                 var result = orderRepository.Add(entity);
                 return mapper.Map<Order,OrderDto>(result);
 
             }
             catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public OrderDto GetOrderById(string id)
+        {
+            try
+            {
+                var order = orderRepository.FindById(id);
+                return mapper.Map<Order, OrderDto>(order);
+            }catch(Exception ex)
             {
                 throw ex;
             }

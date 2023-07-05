@@ -18,6 +18,7 @@ namespace Implements.Repositories
         public Order Add(Order entity)
         {
             this.db.Orders.Add(entity);
+            this.db.SaveChanges();
             return entity;
         }
 
@@ -33,7 +34,7 @@ namespace Implements.Repositories
 
         public Order FindById(string id)
         {
-            throw new NotImplementedException();
+            return this.db.Orders.Where(t => t.Id == id).FirstOrDefault();
         }
 
         public List<Order> Search()
