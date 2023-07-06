@@ -14,5 +14,7 @@ namespace Core.Services
 
         OrderDto UpdateOrder(string id, OrderDto input);
         void DeleteOrder(string id);
+
+        List<OrderDto> SearchOrder(OrderSearchDto input);
     }
 }

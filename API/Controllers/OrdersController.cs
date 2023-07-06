@@ -14,6 +14,22 @@ namespace API.Controllers
         {
             this.orderService = orderService;
         }
+
+        [HttpGet]
+        public ActionResult GetAllOrder([FromQuery] OrderSearchDto search)
+        {
+            try
+            {
+               var orders = orderService.SearchOrder(search);
+                return Ok(orders);
+            }catch(Exception ex)
+            {
+                var data = new JsonResult(ex.Message);
+                data.StatusCode = 500;
+                return data;
+            }
+        }
+
         [HttpPost]
         public ActionResult CreateOrder(OrderDto input)
         {

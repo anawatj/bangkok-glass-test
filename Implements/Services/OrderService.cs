@@ -116,6 +116,19 @@ namespace Implements.Services
             }
         }
 
+        public List<OrderDto> SearchOrder(OrderSearchDto search)
+        {
+            try
+            {
+                var orders = orderRepository.Search(search);
+                return orders.Select(t => mapper.Map<Order, OrderDto>(t)).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         public OrderDto UpdateOrder(string id, OrderDto input)
         {
             try
