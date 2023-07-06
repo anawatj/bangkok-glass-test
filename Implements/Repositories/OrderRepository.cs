@@ -38,7 +38,7 @@ namespace Implements.Repositories
 
         public Order FindById(string id)
         {
-            return this.db.Orders.Where(t => t.Id == id).FirstOrDefault();
+            return this.db.Orders.Include(t=>t.Product).Where(t => t.Id == id).FirstOrDefault();
         }
 
         public List<Order> Search(OrderSearchDto search)
