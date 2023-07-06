@@ -32,7 +32,7 @@ namespace Implements.Repositories
 
         public Region FindById(string id)
         {
-            throw new NotImplementedException();
+            return this.db.Regions.Where(t => t.Id == id).FirstOrDefault();
         }
 
         public Region Update(Region entity, string id)

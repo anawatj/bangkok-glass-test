@@ -16,14 +16,26 @@ namespace Implements.Services
         private ApplicationDbContext db;
         private IMapper mapper;
         private IOrderRepository orderRepository;
+        private IRegionRepository regionRepository;
+        private ICityRepository cityRepository;
+        private ICategoryRepository categoryRepository;
+        private IProductRepository productRepository;
         public OrderService(
              ApplicationDbContext db,
              IMapper mapper,
-             IOrderRepository orderRepository)
+             IOrderRepository orderRepository,
+             IRegionRepository regionRepository,
+             ICityRepository cityRepository,
+             ICategoryRepository categoryRepository,
+             IProductRepository productRepository)
         {
             this.db = db;
             this.mapper = mapper;
             this.orderRepository = orderRepository;
+            this.regionRepository = regionRepository;
+            this.cityRepository = cityRepository;
+            this.categoryRepository = categoryRepository;
+            this.productRepository = productRepository;
         }
         public OrderDto CreateOrder(OrderDto input)
         {
@@ -148,9 +160,13 @@ namespace Implements.Services
                 }
                 data.OrderDate = input.OrderDate;
                 data.RegionId = input.RegionId;
+                data.Region = regionRepository.FindById(input.RegionId);
                 data.CityId = input.CityId;
+                data.City = cityRepository.FindById(input.CityId);
                 data.CategoryId = input.CategoryId;
+                data.Category = categoryRepository.FindById(input.CategoryId);
                 data.ProductId = input.ProductId;
+                data.Product = productRepository.FindById(input.ProductId);
                 data.Quantity = input.Quantity;
                 data.TotalPrice = input.TotalPrice;
                 var result = orderRepository.Update(data, id);

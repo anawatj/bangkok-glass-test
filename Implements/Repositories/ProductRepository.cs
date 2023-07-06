@@ -1,5 +1,6 @@
 ﻿using Core.Domains;
 using Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Implements.Repositories
 
         public List<Product> FindAll()
         {
-            return this.db.Products.ToList();
+            return this.db.Products.Include(t=>t.Category).ToList();
         }
 
         public List<Product> FindByCategory(string categoryId)

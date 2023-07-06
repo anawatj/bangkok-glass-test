@@ -17,5 +17,6 @@ namespace Core.Services
         public ProductDto UpdateProduct(string id, ProductDto input);
 
         public void DeleteProduct(string id);
+        
     }
 }

@@ -16,15 +16,18 @@ namespace Implements.Services
         private ApplicationDbContext db;
         private IMapper mapper;
         private IProductRepository productRepository;
+        private ICategoryRepository categoryRepository;
         public ProductService(
             ApplicationDbContext db,
             IMapper mapper,
-            IProductRepository productRepository
+            IProductRepository productRepository,
+            ICategoryRepository categoryRepository
             )
         {
             this.db = db;
             this.mapper = mapper;
             this.productRepository = productRepository;
+            this.categoryRepository = categoryRepository;
         }
         public ProductDto CreateProduct(ProductDto input)
         {
@@ -130,6 +133,7 @@ namespace Implements.Services
                 //var product = mapper.Map<ProductDto, Product>(input);
                 product.ProductName = input.ProductName;
                 product.CategoryId = input.CategoryId;
+                product.Category = categoryRepository.FindById(input.CategoryId);
                 product.UnitPrice = input.UnitPrice;
                 productRepository.Update(product, id);
                 return mapper.Map<Product, ProductDto>(product);

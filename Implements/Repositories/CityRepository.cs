@@ -33,7 +33,7 @@ namespace Implements.Repositories
 
         public City FindById(string id)
         {
-            throw new NotImplementedException();
+            return this.db.Cities.Where(t => t.Id == id).FirstOrDefault();
         }
 
         public List<City> FindByRegion(string regionId)

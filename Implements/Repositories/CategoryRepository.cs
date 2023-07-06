@@ -34,7 +34,7 @@ namespace Implements.Repositories
 
         public Category FindById(string id)
         {
-            return db.Categories.Where(t => t.Id == id).First();
+            return db.Categories.Where(t => t.Id == id).FirstOrDefault();
         }
 
         public Category Update(Category entity, string id)
