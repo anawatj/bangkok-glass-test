@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Domains
+namespace Core.Dtos
 {
-    public class Product : BaseDomain<String>
+    public class ProductDto
     {
+        public string Id { get; set; }
         public string ProductName { get; set; }
-        public Category Category { get; set; }
         public string CategoryId { get; set; }
-        public decimal UnitPrice { get; set; }
 
-        public IList<Order> Orders { get; set; }
+        public string CategoryName { get; set; }
+
+        public decimal UnitPrice { get; set; }
     }
 }

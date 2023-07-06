@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230705085634_InitialCreate")]
+    [Migration("20230706023858_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -41,22 +41,22 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "db9c8841-efbd-48e3-9636-11c7de440010",
+                            Id = "97b33437-52a3-46f1-867c-c310d3ef73e8",
                             CategoryName = "Cookies"
                         },
                         new
                         {
-                            Id = "8959b817-2c19-47ac-ae3f-4f446638619e",
+                            Id = "a53e48a5-e145-46fe-a59b-00811fb4307b",
                             CategoryName = "Crackers"
                         },
                         new
                         {
-                            Id = "262474b5-eba8-4f88-bcd8-a3c70aaf74d8",
+                            Id = "f4f4de08-f4b2-4ec6-9471-0af49fbf197b",
                             CategoryName = "Bars"
                         },
                         new
                         {
-                            Id = "e21d6266-ff57-4ee0-9b7f-26492e8878c4",
+                            Id = "e0273c5f-5aa2-4fb7-a251-3190a01443c7",
                             CategoryName = "Snack"
                         });
                 });
@@ -83,27 +83,27 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f66d70c2-fb76-47cd-b857-8a1f95cc6f26",
+                            Id = "ca1563ed-a933-499c-be6e-c38f65cc66e6",
                             CityName = "Boston",
-                            RegionId = "fb75e403-e2d9-4fa8-a499-46995aea008d"
+                            RegionId = "baa1f397-c98c-4c96-b69b-953833a6f844"
                         },
                         new
                         {
-                            Id = "ba0c074a-8388-4ca1-8918-1bb29c47201c",
+                            Id = "6631cdd2-2e26-4128-808c-b99a7a568353",
                             CityName = "New York",
-                            RegionId = "fb75e403-e2d9-4fa8-a499-46995aea008d"
+                            RegionId = "baa1f397-c98c-4c96-b69b-953833a6f844"
                         },
                         new
                         {
-                            Id = "ba999d0d-3f3f-4c84-9245-61fb1a98c852",
+                            Id = "1e57a5de-be7e-4c25-9c11-becbd81ffc9c",
                             CityName = "Los Angeles",
-                            RegionId = "43380845-8317-409b-803c-c73e47bf875a"
+                            RegionId = "5a09f202-9faf-412a-98e3-44e85188cf77"
                         },
                         new
                         {
-                            Id = "f71e8d8b-55fe-444a-99b8-945704c0d650",
+                            Id = "59d0a0c2-f34b-4397-882d-96f1c354070f",
                             CityName = "Santiago",
-                            RegionId = "43380845-8317-409b-803c-c73e47bf875a"
+                            RegionId = "5a09f202-9faf-412a-98e3-44e85188cf77"
                         });
                 });
 
@@ -138,10 +138,6 @@ namespace API.Migrations
                         .HasPrecision(18, 4)
                         .HasColumnType("decimal(18,4)");
 
-                    b.Property<decimal>("UnitPrice")
-                        .HasPrecision(18, 4)
-                        .HasColumnType("decimal(18,4)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -168,6 +164,10 @@ namespace API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<decimal>("UnitPrice")
+                        .HasPrecision(18, 4)
+                        .HasColumnType("decimal(18,4)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
@@ -177,45 +177,52 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2d0ded5e-2356-4b51-944c-da716ae1c657",
-                            CategoryId = "db9c8841-efbd-48e3-9636-11c7de440010",
-                            ProductName = "Arrowroot"
+                            Id = "af0b5805-0db4-4eb7-aa30-c6d97c5360b0",
+                            CategoryId = "97b33437-52a3-46f1-867c-c310d3ef73e8",
+                            ProductName = "Arrowroot",
+                            UnitPrice = 2.18m
                         },
                         new
                         {
-                            Id = "388f2e8e-ab0d-4f32-91ce-78b13de46758",
-                            CategoryId = "db9c8841-efbd-48e3-9636-11c7de440010",
-                            ProductName = "Chocolate Chip"
+                            Id = "2373dba0-fb7e-49ed-8e31-35a860c5d21a",
+                            CategoryId = "97b33437-52a3-46f1-867c-c310d3ef73e8",
+                            ProductName = "Chocolate Chip",
+                            UnitPrice = 1.87m
                         },
                         new
                         {
-                            Id = "b921c3de-f523-4d9b-85c1-1ec754506cc6",
-                            CategoryId = "8959b817-2c19-47ac-ae3f-4f446638619e",
-                            ProductName = "Whole Wheat"
+                            Id = "645c2070-63b3-4c67-8acf-2f6e5b6156ec",
+                            CategoryId = "a53e48a5-e145-46fe-a59b-00811fb4307b",
+                            ProductName = "Whole Wheat",
+                            UnitPrice = 3.49m
                         },
                         new
                         {
-                            Id = "5e5a1cc6-e795-47da-aae6-3b9124b6ef3e",
-                            CategoryId = "e21d6266-ff57-4ee0-9b7f-26492e8878c4",
-                            ProductName = "Potato Chips"
+                            Id = "cca4be31-8b1a-4ac7-900d-fc601a1bcf62",
+                            CategoryId = "e0273c5f-5aa2-4fb7-a251-3190a01443c7",
+                            ProductName = "Potato Chips",
+                            UnitPrice = 1.35m
                         },
                         new
                         {
-                            Id = "b84efd99-bf35-4a33-9653-8aebd7ccbb39",
-                            CategoryId = "e21d6266-ff57-4ee0-9b7f-26492e8878c4",
-                            ProductName = "Pretzels"
+                            Id = "8c4de4d3-188f-4566-a116-0ca3f92d9be5",
+                            CategoryId = "e0273c5f-5aa2-4fb7-a251-3190a01443c7",
+                            ProductName = "Pretzels",
+                            UnitPrice = 3.15m
                         },
                         new
                         {
-                            Id = "dbd3518a-2a27-44d8-8fb2-09ebadacaaaf",
-                            CategoryId = "262474b5-eba8-4f88-bcd8-a3c70aaf74d8",
-                            ProductName = "Carrot"
+                            Id = "b97ae87a-1d61-4120-ae0b-e248e3b9a02a",
+                            CategoryId = "f4f4de08-f4b2-4ec6-9471-0af49fbf197b",
+                            ProductName = "Carrot",
+                            UnitPrice = 1.77m
                         },
                         new
                         {
-                            Id = "a46fd69c-9b80-41e1-a203-b5e5e0279e87",
-                            CategoryId = "262474b5-eba8-4f88-bcd8-a3c70aaf74d8",
-                            ProductName = "Bran"
+                            Id = "8a17a631-2626-466c-b0e0-c1d398bb5737",
+                            CategoryId = "f4f4de08-f4b2-4ec6-9471-0af49fbf197b",
+                            ProductName = "Bran",
+                            UnitPrice = 1.87m
                         });
                 });
 
@@ -235,12 +242,12 @@ namespace API.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "fb75e403-e2d9-4fa8-a499-46995aea008d",
+                            Id = "baa1f397-c98c-4c96-b69b-953833a6f844",
                             RegionName = "EAST"
                         },
                         new
                         {
-                            Id = "43380845-8317-409b-803c-c73e47bf875a",
+                            Id = "5a09f202-9faf-412a-98e3-44e85188cf77",
                             RegionName = "WEST"
                         });
                 });

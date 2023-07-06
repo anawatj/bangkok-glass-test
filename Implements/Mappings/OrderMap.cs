@@ -17,7 +17,7 @@ namespace Implements.Mappings
             builder.HasKey(t => t.Id);
             builder.Property(t => t.OrderDate);
             builder.Property(t => t.Quantity);
-            builder.Property(t => t.UnitPrice).HasPrecision(18,4);
+           
             builder.Property(t => t.TotalPrice).HasPrecision(18,4);
             builder.HasOne(t => t.Category).WithMany(t => t.Orders).HasForeignKey(t => t.CategoryId);
             builder.HasOne(t => t.Product).WithMany(t => t.Orders).HasForeignKey(t => t.ProductId) ;

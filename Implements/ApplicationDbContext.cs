@@ -69,13 +69,13 @@ namespace Implements
 
 
             modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = cookieId, ProductName = "Arrowroot" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = cookieId, ProductName = "Chocolate Chip" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = crackerId, ProductName = "Whole Wheat" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = snackId, ProductName = "Potato Chips" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = snackId, ProductName = "Pretzels" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = barsId, ProductName = "Carrot" },
-                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = barsId, ProductName = "Bran" }
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = cookieId, ProductName = "Arrowroot" ,UnitPrice=(decimal)2.18 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = cookieId, ProductName = "Chocolate Chip",UnitPrice=(decimal)1.87 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = crackerId, ProductName = "Whole Wheat" ,UnitPrice=(decimal)3.49 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = snackId, ProductName = "Potato Chips", UnitPrice=(decimal)1.35 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = snackId, ProductName = "Pretzels", UnitPrice=(decimal) 3.15 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = barsId, ProductName = "Carrot" ,UnitPrice=(decimal) 1.77 },
+                new Product() { Id = Guid.NewGuid().ToString(), CategoryId = barsId, ProductName = "Bran" ,UnitPrice=(decimal) 1.87 }
                 );
         }
     }

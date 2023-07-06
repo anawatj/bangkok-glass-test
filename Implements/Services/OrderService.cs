@@ -52,10 +52,7 @@ namespace Implements.Services
                 {
                     errors.Add("quantity is required");
                 }
-                if (input.UnitPrice <= 0)
-                {
-                    errors.Add("unit price is required");
-                }
+           
 
                 if (input.TotalPrice <= 0)
                 {
@@ -133,10 +130,7 @@ namespace Implements.Services
                 {
                     errors.Add("quantity is required");
                 }
-                if (input.UnitPrice <= 0)
-                {
-                    errors.Add("unit price is required");
-                }
+              
 
                 if (input.TotalPrice <= 0)
                 {
@@ -146,14 +140,20 @@ namespace Implements.Services
                 {
                     throw new Exception(String.Join(",", errors));
                 }
+               
                 Order data = orderRepository.FindById(id);
                 if (data == null)
                 {
                     throw new Exception("this order not found");
                 }
-                Order entity = mapper.Map<OrderDto, Order>(input);
-                //entity.Id = id;
-                var result = orderRepository.Update(entity, id);
+                data.OrderDate = input.OrderDate;
+                data.RegionId = input.RegionId;
+                data.CityId = input.CityId;
+                data.CategoryId = input.CategoryId;
+                data.ProductId = input.ProductId;
+                data.Quantity = input.Quantity;
+                data.TotalPrice = input.TotalPrice;
+                var result = orderRepository.Update(data, id);
                 return mapper.Map<Order, OrderDto>(result);
 
             }

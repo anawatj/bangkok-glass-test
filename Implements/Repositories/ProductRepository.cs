@@ -17,17 +17,21 @@ namespace Implements.Repositories
         }
         public Product Add(Product entity)
         {
-            throw new NotImplementedException();
+            var result = this.db.Products.Add(entity);
+            this.db.SaveChanges();
+            return entity;
         }
 
         public void Delete(string id)
         {
-            throw new NotImplementedException();
+            var result = this.db.Products.Where(t => t.Id == id).First();
+            this.db.Products.Remove(result);
+            this.db.SaveChanges();
         }
 
         public List<Product> FindAll()
         {
-            throw new NotImplementedException();
+            return this.db.Products.ToList();
         }
 
         public List<Product> FindByCategory(string categoryId)
@@ -37,12 +41,14 @@ namespace Implements.Repositories
 
         public Product FindById(string id)
         {
-            throw new NotImplementedException();
+            return this.db.Products.Where(t => t.Id == id).FirstOrDefault();
         }
 
         public Product Update(Product entity, string id)
         {
-            throw new NotImplementedException();
+            this.db.Products.Update(entity);
+            this.db.SaveChanges();
+            return entity;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace Implements.Mappings
             builder.ToTable("Products");
             builder.HasKey(t => t.Id);
             builder.Property(t => t.ProductName);
+            builder.Property(t => t.UnitPrice).HasPrecision(18, 4);
             builder.HasOne(t => t.Category).WithMany(t => t.Products).HasForeignKey(t => t.CategoryId);
         }
     }
