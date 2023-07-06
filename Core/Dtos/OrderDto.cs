@@ -13,22 +13,22 @@ namespace Core.Dtos
 
         public string RegionId { get; set; }
 
-        public string RegionName { get; set; }
+        public string? RegionName { get; set; }
 
         public string CityId { get; set; }
-        public string CityName { get; set; }
+        public string? CityName { get; set; }
 
         public string CategoryId { get; set; }
 
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
 
         public string ProductId { get; set; }
 
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         public int Quantity { get; set; }
 
-        //public decimal UnitPrice { get; set; }
+        public decimal UnitPrice { get; set; }
 
         public decimal TotalPrice { get; set; }
     }

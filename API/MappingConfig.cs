@@ -36,7 +36,7 @@ namespace API
                 .ForMember(t=>t.ProductId,t=>t.MapFrom(t=>t.ProductId))
                 .ForMember(t=>t.ProductName,t=>t.MapFrom(t=>t.Product.ProductName))
                 .ForMember(t=>t.Quantity,t=>t.MapFrom(t=>t.Quantity))
-                //.ForMember(t=>t.UnitPrice,t=>t.MapFrom(t=>t.UnitPrice))
+                .ForMember(t=>t.UnitPrice,t=>t.MapFrom(t=>t.Product.UnitPrice))
                 .ForMember(t=>t.TotalPrice,t=>t.MapFrom(t=>t.TotalPrice));
 
 
