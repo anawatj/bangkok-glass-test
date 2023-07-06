@@ -40,6 +40,7 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IOrderRepository, OrderRepository>();
 builder.Services.AddTransient<IOrderService, OrderService>();
 builder.Services.AddTransient<ICommonService, CommonService>();
+builder.Services.AddTransient<IProductService, ProductService>();
 
 var app = builder.Build();
 
