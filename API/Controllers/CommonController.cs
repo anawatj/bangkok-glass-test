@@ -16,28 +16,66 @@ namespace API.Controllers
         }
         [Route("regions")]
         [HttpGet]
-        public IEnumerable<SelectItemDto> GetAllRegions()
+        public ActionResult GetAllRegions()
         {
-            return this.commonService.GetRegions();
+            try
+            {
+                var regions = commonService.GetRegions();
+                return Ok(regions);
+            }catch(Exception ex)
+            {
+                var result = new JsonResult(ex.Message);
+                result.StatusCode = 500;
+                return result;
+            }
         }
         [Route("regions/{regionId}/cities")]
         [HttpGet]
-        public IEnumerable<SelectItemDto> GetAllCities(string regionId)
+        public ActionResult GetAllCities(string regionId)
         {
-            return this.commonService.GetCities(regionId);
+            try
+            {
+                var cities = commonService.GetCities(regionId);
+                return Ok(cities);
+            }catch(Exception ex)
+            {
+                var result = new JsonResult(ex.Message);
+                result.StatusCode = 500;
+                return result;
+            }
         }
         [Route("categories")]
         [HttpGet]
-        public IEnumerable<SelectItemDto> GetAllCategories()
+        public ActionResult GetAllCategories()
         {
-            return this.commonService.GetCategories();
+            try
+            {
+                var categories = commonService.GetCategories();
+                return Ok(categories);
+            }
+            catch (Exception ex)
+            {
+                var result = new JsonResult(ex.Message);
+                result.StatusCode = 500;
+                return result;
+            }
         }
 
         [Route("categories/{categoryId}/products")]
         [HttpGet]
-        public IEnumerable<SelectItemDto> GetAllProducts(string categoryId)
+        public ActionResult GetAllProducts(string categoryId)
         {
-            return this.commonService.GetProducts(categoryId);
+            try
+            {
+                var products = commonService.GetProducts(categoryId);
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                var result = new JsonResult(ex.Message);
+                result.StatusCode = 500;
+                return result;
+            }
         }
     }
 }
